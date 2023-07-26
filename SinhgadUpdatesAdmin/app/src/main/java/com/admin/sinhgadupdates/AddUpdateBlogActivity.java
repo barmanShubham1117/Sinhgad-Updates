@@ -49,8 +49,6 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
     // request code
     private final int PICK_IMAGE_REQUEST = 22;
 
-    // instance for firebase storage and StorageReference
-    private FirebaseStorage storage;
     private StorageReference storageReference;
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -182,7 +180,14 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
                 resetView();
                 progress.dismiss();
             }
-        });
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e(TAG, "onFailure: "+ e.getMessage());
+                        Toast.makeText(AddUpdateBlogActivity.this, "Something went wrong.", Toast.LENGTH_SHORT).show();
+                        progress.dismiss();                    }
+                });
     }
 
     private void updateBlog(Uri uri) {
@@ -208,6 +213,7 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.e(TAG, "onFailure: "+ e.getMessage());
+                        Toast.makeText(AddUpdateBlogActivity.this, "Something went wrong.", Toast.LENGTH_SHORT).show();
                         progress.dismiss();
                     }
                 });
@@ -236,6 +242,7 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.e(TAG, "onFailure: "+ e.getMessage());
+                        Toast.makeText(AddUpdateBlogActivity.this, "Something went wrong.", Toast.LENGTH_SHORT).show();
                         progress.dismiss();
                     }
                 });

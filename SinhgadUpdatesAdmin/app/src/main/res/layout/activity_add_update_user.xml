@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/cut_card_background"
+    android:orientation="vertical"
+    tools:context=".AddUpdateUserActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New User"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="#CC000000"
+        android:fontFamily="sans-serif-condensed"/>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:inputType="text"
+        android:id="@+id/user_name"
+        android:hint="Full Name"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"
+        android:background="@color/white"
+        tools:ignore="Autofill" />
+
+
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:inputType="phone"
+        android:maxLength="11"
+        android:id="@+id/user_number"
+        android:hint="Phone Number"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:inputType="textEmailAddress"
+        android:id="@+id/user_email"
+        android:hint="Email"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:layout_margin="10dp"
+        android:paddingEnd="0dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:inputType="textPassword"
+        android:id="@+id/user_password"
+        android:hint="Password"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:inputType="textPassword"
+        android:id="@+id/user_conpassword"
+        android:hint="Confirm Password"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="0dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/user_addBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:background="#021F39"
+        android:text="Add"
+        android:textColor="@color/white"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="40dp"/>
+
+
+</LinearLayout>

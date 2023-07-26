@@ -49,13 +49,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="UPDATE"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:backgroundTint="@color/orange"/>
 
             <Button
                 android:id="@+id/blog_recyclerView_delete_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="DELETE"/>
+                android:text="DELETE"
+                android:backgroundTint="@color/orange"/>
 
         </LinearLayout>
 

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,21 +15,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.admin.sinhgadupdates.AddUpdateBlogActivity;
+import com.admin.sinhgadupdates.AddUpdateUserActivity;
 import com.admin.sinhgadupdates.R;
 import com.admin.sinhgadupdates.model.BlogModel;
+import com.admin.sinhgadupdates.model.UserModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ManageBlogAdapter extends RecyclerView.Adapter<ManageBlogAdapter.ViewHolder>{
+public class ManageUserAdapter extends RecyclerView.Adapter<ManageUserAdapter.ViewHolder> {
 
     private Context context;
-    private List<BlogModel> list;
+    private List<UserModel> list;
     private Activity activity;
 
-    public ManageBlogAdapter(Context context, List<BlogModel> list, Activity activity) {
+    public ManageUserAdapter(Context context, List<UserModel> list, Activity activity) {
         this.context = context;
         this.list = list;
         this.activity = activity;
@@ -39,24 +40,22 @@ public class ManageBlogAdapter extends RecyclerView.Adapter<ManageBlogAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.row_manage_blog, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_manage_user, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BlogModel blog= list.get(position);
-        holder.title.setText(blog.getTitle());
-        holder.descriprtion.setText(blog.getDescription());
-
-        Picasso.get().load(blog.getImgURL()).into(holder.image);
+        UserModel user = list.get(position);
+        holder.txtUsername.setText(user.getUsername());
+        holder.txtMobile.setText(user.getMobile());
 
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(activity)
                         .setCancelable(false)
-                        .setTitle("Delete Blog")
+                        .setTitle("Delete User")
                         .setMessage("Are you sure you want to delete?")
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
@@ -66,8 +65,8 @@ public class ManageBlogAdapter extends RecyclerView.Adapter<ManageBlogAdapter.Vi
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 FirebaseDatabase.getInstance()
-                                        .getReference("blogs")
-                                        .child(blog.getBlogId())
+                                        .getReference("users")
+                                        .child(user.getUserID())
                                         .removeValue();
                                 Toast.makeText(holder.deleteBtn.getContext(), "Deleted Successfully", Toast.LENGTH_SHORT).show();
                             }
@@ -79,12 +78,13 @@ public class ManageBlogAdapter extends RecyclerView.Adapter<ManageBlogAdapter.Vi
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, AddUpdateBlogActivity.class);
-                intent.putExtra("update_blogId", list.get(holder.getAdapterPosition()).getBlogId());
-                intent.putExtra("update_blog_title", list.get(holder.getAdapterPosition()).getTitle());
-                intent.putExtra("update_blog_description", list.get(holder.getAdapterPosition()).getDescription());
-                intent.putExtra("update_blog_imgURL", list.get(holder.getAdapterPosition()).getImgURL());
-                intent.putExtra("update_blog_likes", list.get(holder.getAdapterPosition()).getLikes());
+                Intent intent = new Intent(context, AddUpdateUserActivity.class);
+                intent.putExtra("action", "UPDATE_USER");
+                intent.putExtra("update_user_id", list.get(holder.getAdapterPosition()).getUserID());
+                intent.putExtra("update_user_name", list.get(holder.getAdapterPosition()).getUsername());
+                intent.putExtra("update_user_mobile", list.get(holder.getAdapterPosition()).getMobile());
+                intent.putExtra("update_user_email", list.get(holder.getAdapterPosition()).getEmailId());
+                intent.putExtra("update_user_password", list.get(holder.getAdapterPosition()).getPassword());
                 activity.startActivity(intent);
             }
         });
@@ -95,20 +95,17 @@ public class ManageBlogAdapter extends RecyclerView.Adapter<ManageBlogAdapter.Vi
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        private TextView txtUsername, txtMobile;
+        private Button updateBtn, deleteBtn;
 
-        private ImageView image;
-        private Button updateBtn,deleteBtn;
-        private TextView title, descriprtion;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            image=itemView.findViewById(R.id.blog_recyclerView_img);
-            title=itemView.findViewById(R.id.blog_recyclerView_title);
-            descriprtion=itemView.findViewById(R.id.blog_recyclerView_desc);
-
-            updateBtn=(Button)itemView.findViewById(R.id.blog_recyclerView_update_btn);
-            deleteBtn=(Button)itemView.findViewById(R.id.blog_recyclerView_delete_btn);
+            txtUsername = itemView.findViewById(R.id.ma_txtUsername);
+            txtMobile = itemView.findViewById(R.id.ma_txtMobile);
+            updateBtn = itemView.findViewById(R.id.ma_updateUserBtn);
+            deleteBtn = itemView.findViewById(R.id.ma_deleteUserBtn);
         }
     }
 }
