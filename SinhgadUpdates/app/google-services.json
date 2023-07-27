@@ -1,0 +1,127 @@
+{
+  "project_info": {
+    "project_number": "244139546854",
+    "firebase_url": "https://sinhgad-updates-default-rtdb.firebaseio.com",
+    "project_id": "sinhgad-updates",
+    "storage_bucket": "sinhgad-updates.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244139546854:android:335488712ff9a7f2434327",
+        "android_client_info": {
+          "package_name": "com.admin.sinhgadupdates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244139546854-cv8ugnu7jghk79v047h1uvb8coi79n1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU9d276j2WWHMNGOFP3PvIP_kOEBqqxGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244139546854-cv8ugnu7jghk79v047h1uvb8coi79n1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244139546854:android:02fcd3563fc725bb434327",
+        "android_client_info": {
+          "package_name": "com.example.sinhgadupdatesadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244139546854-cv8ugnu7jghk79v047h1uvb8coi79n1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU9d276j2WWHMNGOFP3PvIP_kOEBqqxGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244139546854-cv8ugnu7jghk79v047h1uvb8coi79n1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244139546854:android:0bbae0ab266c68b8434327",
+        "android_client_info": {
+          "package_name": "com.example.sinhgadupdatesuser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244139546854-cv8ugnu7jghk79v047h1uvb8coi79n1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU9d276j2WWHMNGOFP3PvIP_kOEBqqxGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244139546854-cv8ugnu7jghk79v047h1uvb8coi79n1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244139546854:android:e55fff70e4f06714434327",
+        "android_client_info": {
+          "package_name": "com.user.sinhgadupdates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244139546854-cv8ugnu7jghk79v047h1uvb8coi79n1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU9d276j2WWHMNGOFP3PvIP_kOEBqqxGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244139546854-cv8ugnu7jghk79v047h1uvb8coi79n1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

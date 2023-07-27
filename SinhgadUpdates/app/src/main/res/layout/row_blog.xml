@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="25dp"
+    android:layout_marginHorizontal="10dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        app:strokeWidth="3dp"
+        app:strokeColor="@color/orange"
+        app:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/row_blog_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blog Title"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:paddingLeft="20dp"
+                android:paddingVertical="5dp"
+                android:background="@color/orange"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/row_blog_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_default_blog"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/orange">
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/row_blog_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blog Description"
+                android:textColor="@color/orange"
+                android:textStyle="italic"
+                android:textSize="14sp"
+                android:paddingLeft="20dp"
+                android:paddingVertical="5dp"
+                android:background="@color/white"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/row_blog_likeBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:elevation="3dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="@color/white"
+            app:strokeColor="@color/orange"
+            app:strokeWidth="3dp"
+            android:layout_marginRight="5dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/row_like"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_like_disable"
+                android:layout_gravity="center"
+                android:layout_marginVertical="5dp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/row_blog_commentBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:elevation="3dp"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="10dp"
+            app:strokeColor="@color/orange"
+            app:strokeWidth="3dp"
+            android:layout_marginLeft="5dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_comment"
+                android:layout_gravity="center"
+                android:layout_marginVertical="5dp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</LinearLayout>
