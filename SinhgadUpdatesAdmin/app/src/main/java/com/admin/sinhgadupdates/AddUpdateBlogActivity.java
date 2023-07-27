@@ -54,6 +54,7 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
     private DatabaseReference reference;
 
     private ProgressDialog progress;
+    private Intent intent;
     private String TAG = "AddBlogActivity";
 
     @Override
@@ -68,8 +69,8 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
 
         blog = new BlogModel();
 
-        Intent intent = getIntent();
-        if (intent.hasExtra("update_blogId")) {
+        intent = getIntent();
+        if (intent.hasExtra("action")) {
             blog.setBlogId(intent.getStringExtra("update_blogId"));
             blog.setTitle(intent.getStringExtra("update_blog_title"));
             blog.setDescription(intent.getStringExtra("update_blog_description"));
@@ -82,7 +83,7 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
             Log.e(TAG, "Likes: " + blog.getLikes());
         }
 
-        if (blog.getBlogId() != null || blog.getBlogId() != "") {
+        if (intent.hasExtra("action")) {
             bTitle.setText(blog.getTitle());
             bDescription.setText(blog.getDescription());
             Picasso.get().load(blog.getImgURL()).into(imageView);
@@ -125,7 +126,7 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
             String filename = dateFormat.format(date);
             storageReference = FirebaseStorage.getInstance().getReference("uploads/" + filename);
 
-            if ((blog.getBlogId() != null || blog.getBlogId() != "") && filePath == null && blog.getImgURL() != null) {
+            if (intent.hasExtra("action")) {
                 updateBlog();
             }
             else {
@@ -139,7 +140,7 @@ public class AddUpdateBlogActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         Log.e("TAG", "onSuccess: " + uri.toString());
-                                        if (blog.getBlogId() != null || blog.getBlogId() != "") {
+                                        if (intent.hasExtra("action")) {
                                             updateBlog(uri);
                                         } else {
                                             uploadBlog(uri);

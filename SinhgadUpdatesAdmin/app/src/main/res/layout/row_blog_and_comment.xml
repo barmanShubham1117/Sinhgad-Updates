@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:weightSum="9"
+    android:layout_marginTop="10dp"
+    android:paddingHorizontal="5dp"
+    android:paddingVertical="3dp">
+
+    <TextView
+        android:id="@+id/bac_blog_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:text="Blog Title"
+        android:textStyle="bold|italic"
+        android:textSize="16sp"
+        android:layout_gravity="center_vertical"/>
+
+    <ImageButton
+        android:id="@+id/bac_view_comment_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/ic_right_half_arrow"
+        android:layout_gravity="center_vertical"/>
+
+
+</LinearLayout>

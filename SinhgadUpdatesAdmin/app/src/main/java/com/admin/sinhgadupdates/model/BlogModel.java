@@ -48,8 +48,13 @@ public class BlogModel {
         this.likes = likes;
     }
 
-    class Comment {
-        private String commentId, authorId, author, comment, time;
+    public class Comment {
+        private String commentId;
+        private String blogId;
+        private String authorId;
+        private String author;
+        private String comment;
+        private String time;
 
         public Comment() {
         }
@@ -60,6 +65,14 @@ public class BlogModel {
 
         public void setCommentId(String commentId) {
             this.commentId = commentId;
+        }
+
+        public String getBlogId() {
+            return blogId;
+        }
+
+        public void setBlogId(String blogId) {
+            this.blogId = blogId;
         }
 
         public String getAuthorId() {

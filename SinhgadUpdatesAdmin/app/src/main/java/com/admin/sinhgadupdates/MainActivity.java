@@ -17,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private TextView user;
     private FirebaseUser mUser;
-    private CardView logout, notification,usercard,postblog, manageblog;
-//    private TextView textView;
+    private CardView logout, notification,usercard,postblog, manageblog, commentCard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         usercard= findViewById(R.id.usercard);
         postblog= findViewById(R.id.postblog);
         manageblog=findViewById(R.id.manegeblog);
+        commentCard=findViewById(R.id.comment_management_card);
 
         mAuth= FirebaseAuth.getInstance();
         mUser= mAuth.getCurrentUser();
@@ -53,9 +53,16 @@ public class MainActivity extends AppCompatActivity {
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent=new Intent(getApplicationContext(), com.example.sinhgadupdatesadmin.notification.class);
+//                Intent intent=new Intent(getApplicationContext(), BlogAndCommentActivity.class);
 //                startActivity(intent);
-                Toast.makeText(getApplicationContext(), "You are now on Notification Page", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        commentCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), BlogAndCommentActivity.class);
+                startActivity(intent);
             }
         });
 
