@@ -57,8 +57,6 @@ public class RecyclerViewBlogAdapter extends RecyclerView.Adapter<RecyclerViewBl
 
             Picasso.get().load(blog.getImgURL()).into(holder.image);
 
-//            if ()
-
             holder.likeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,8 @@ public class RegisterActivity extends AppCompatActivity {
     private UserModel user;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private SharedPreferences mPrefs;
+    private SharedPreferences.Editor editor;
     private String TAG = "RegisterActivity";
 
     @Override
@@ -41,6 +44,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerBtn = findViewById(R.id.ra_registerBtn);
         redirectLogin = findViewById(R.id.redirect_login);
+
+        user = new UserModel();
+
+        mPrefs = getSharedPreferences("credentials", MODE_PRIVATE);
+        editor = mPrefs.edit();
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +81,10 @@ public class RegisterActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
+                                    editor.putString("mobile", user.getMobile());
+                                    editor.putString("password", user.getPassword());
+                                    editor.apply();
+
                                     Toast.makeText(RegisterActivity.this, "You're registered successfully.", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                     finish();
