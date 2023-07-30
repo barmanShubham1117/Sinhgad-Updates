@@ -1,5 +1,7 @@
 package com.user.sinhgadupdates;
 
+import static com.user.sinhgadupdates.data.UserData.userModel;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,8 +22,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.user.sinhgadupdates.adapter.RecyclerViewBlogAdapter;
 import com.user.sinhgadupdates.model.BlogModel;
+import com.user.sinhgadupdates.model.UserModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        logUserData();
 
         mDatabase=FirebaseDatabase.getInstance();
         mReference=mDatabase.getReference().child("blogs");
@@ -88,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 blogList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    BlogModel blog = dataSnapshot.getValue(BlogModel.class);
+                    Gson gson = new Gson();
+                    JsonElement jsonElement = gson.toJsonTree(dataSnapshot.getValue());
+                    BlogModel blog = gson.fromJson(jsonElement, BlogModel.class);
                     blogList.add(blog);
                     Log.e(TAG, "Blog Id: " + blog.getBlogId());
                     Log.e(TAG, "Title: " + blog.getTitle());
@@ -97,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.e(TAG, "Likes: " + blog.getLikes());
                 }
                 Collections.reverse(blogList);
-                adapter = new RecyclerViewBlogAdapter(getApplicationContext(), blogList, MainActivity.this);
+                adapter = new RecyclerViewBlogAdapter(getApplicationContext(), blogList, MainActivity.this, userModel.getLikedBlogs());
                 recyclerView.setAdapter(adapter);
             }
 
@@ -106,5 +114,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Failed to load blog, try again later.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void logUserData() {
+        Log.e(TAG, "STATIC USER DATA: ");
+        Log.e(TAG, "USERNAME: " + userModel.getUsername());
+        Log.e(TAG, "MOBILE: " + userModel.getMobile());
+        Log.e(TAG, "EMAIL: " + userModel.getEmailId());
+        Log.e(TAG, "PASSWORD: " + userModel.getPassword());
     }
 }

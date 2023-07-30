@@ -1,5 +1,7 @@
 package com.user.sinhgadupdates;
 
+import static com.user.sinhgadupdates.data.UserData.userModel;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,8 +17,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.user.sinhgadupdates.model.UserModel;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -85,6 +90,8 @@ public class RegisterActivity extends AppCompatActivity {
                                     editor.putString("password", user.getPassword());
                                     editor.apply();
 
+                                    setUserData();
+
                                     Toast.makeText(RegisterActivity.this, "You're registered successfully.", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                     finish();
@@ -108,5 +115,15 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void setUserData() {
+        userModel = user;
+
+        Log.e(TAG, "STATIC USER DATA: ");
+        Log.e(TAG, "USERNAME: " + userModel.getUsername());
+        Log.e(TAG, "MOBILE: " + userModel.getMobile());
+        Log.e(TAG, "EMAIL: " + userModel.getEmailId());
+        Log.e(TAG, "PASSWORD: " + userModel.getPassword());
     }
 }

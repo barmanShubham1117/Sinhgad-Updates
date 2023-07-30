@@ -33,10 +33,10 @@ public class SplashScreenActivity extends AppCompatActivity {
                         Log.e(TAG, "Mobile: " + mPrefs.getString("mobile", null));
                         Log.e(TAG, "Password: " + mPrefs.getString("password", null));
 
-                        if (mPrefs.getString("mobile", null) == null || mPrefs.getString("password", null) == null)
+//                        if (mPrefs.getString("mobile", null) == null || mPrefs.getString("password", null) == null)
+//                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//                        else
                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                        else
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         finish();
                     }
                 },

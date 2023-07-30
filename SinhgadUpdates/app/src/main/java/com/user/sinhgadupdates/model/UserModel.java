@@ -45,6 +45,14 @@ public class UserModel {
         return emailId;
     }
 
+    public ArrayList<LikedBlog> getLikedBlogs() {
+        return likedBlogs;
+    }
+
+    public void setLikedBlogs(ArrayList<LikedBlog> likedBlogs) {
+        this.likedBlogs = likedBlogs;
+    }
+
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
@@ -57,10 +65,16 @@ public class UserModel {
         this.mobile = mobile;
     }
 
-    public class LikedBlog {
-        private String blogId, time;
+    public static class LikedBlog {
+        private String blogId;
+        private String time;
 
         public LikedBlog() {
+        }
+
+        public LikedBlog(String blogId, String time) {
+            this.blogId = blogId;
+            this.time = time;
         }
 
         public String getBlogId() {
